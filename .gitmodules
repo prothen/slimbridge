@@ -1,0 +1,6 @@
+[submodule "firmware/lib/mavlink"]
+	path = firmware/lib/mavlink
+	url = https://github.com/mavlink/c_library_v2.git
+[submodule "resources/esptool"]
+	path = resources/esptool
+	url = https://github.com/espressif/esptool.git
