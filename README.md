@@ -52,8 +52,9 @@ WiFi.begin("yourssid", "yourpassword");
 - (optional) install visual studio code extension [here](https://platformio.org/platformio-ide) (in VSC under extensions `PlatformIO IDE`)
 
 ### Build & Flash using PlatformIO
+The following commands are executed in `/firmware`:
 - flash `platformio run -e esp01_1m -t upload`
-    - specific port `platformio run -e esp01 -t upload --upload-port /dev/ttyUSB0`
+    - specific port `platformio run -e esp01_1m -t upload --upload-port /dev/ttyUSB0`
 - clean `platformio run -e esp01_1m -t clean`
 
 ### Flash Procedure
@@ -62,22 +63,20 @@ WiFi.begin("yourssid", "yourpassword");
 
 
 **ESP01 Pinout:**
+
+
 ![esp_pinout](./resources/figures/esp01_pinout.png)
 
 
 **FTDI Wire Guide:**
-- connect FTDI ([see here](https://www.ftdichip.com/Products/Cables/USBTTLSerial.htm<Paste>)
-    - black: ground
-    - brown: CTS (clear to send)
-    - red: vcc
-    - orange: TXD
-    - yellow: RXD
-    - green: RTS (ready to send)
+- connect FTDI [cable](https://www.ftdichip.com/Products/Cables/USBTTLSerial.htm<Paste>)
+    - black:GND, brown:CTS, red:VCC, orange:TXD, yellow:RXD, green:RTS
 
 ![ftdi](./resources/figures/ftdi.png)
 
 
 **Breadboard Wiring Guide:**
+
 Note: 
 - 3.3v (red/purple)
 - gnd (brown - rightmost)
@@ -87,6 +86,8 @@ Modes:
 - normal operation (btns released)
 - reset (left btn pressed)
 - flash (both pressed, left (brown) released first then right (gray))
+
+Example breadboard setup with two buttons:
 ![breadboard](./resources/figures/breadboard.png)
 
 
