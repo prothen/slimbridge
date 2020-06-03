@@ -1,5 +1,5 @@
 # slimbridge
-Slim mavlink bridge exposing mavlink based serial interface to UDP world. This repository aimso to provide a minimal code base for defining a bridge between serial and UDP interfaces. It tries to provide an alternative for the feature rich prominent prevalent solutions. Extensions and improvements are welcome in any form without adding features exceeding the forwarding application.
+Slim mavlink bridge exposing mavlink based serial interface to UDP world. This repository aims to provide a minimal code base for defining a bridge between serial and UDP interfaces. It tries to provide an alternative for the feature rich prominent prevalent solutions. Extensions and improvements are welcome in any form without adding features exceeding the forwarding application.
 
 **Features:**
 - Establish connection to compile time defined hotspot
@@ -64,7 +64,6 @@ The following commands are executed in `/firmware`:
 
 **ESP01 Pinout:**
 
-
 ![esp_pinout](./resources/figures/esp01_pinout.png)
 
 
@@ -90,6 +89,9 @@ Modes:
 Example breadboard setup with two buttons:
 ![breadboard](./resources/figures/breadboard.png)
 
+And a more neat version produced by Robin Baran (@RobinB)
+![breadboard_soldered](./resources/figures/board.jpg)
+![breadboard_soldered_assembly](./resources/figures/assembly.jpg)
 
 ### Debug serial interface
 - Connect ftdi cable with (vcc, gnd, ch_pd, tx(esp) -> rx(ftdi-yellow))
