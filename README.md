@@ -89,7 +89,7 @@ Modes:
 Example breadboard setup with two buttons:
 ![breadboard](./resources/figures/breadboard.png)
 
-And a more neat version produced by Robin Baran (@RobinB)
+And a more neat version produced by Robin Baran ([@RBinsonB](https://github.com/RBinsonB))
 ![breadboard_soldered](./resources/figures/board.jpg)
 ![breadboard_soldered_assembly](./resources/figures/assembly.jpg)
 
