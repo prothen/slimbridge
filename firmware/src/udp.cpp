@@ -3,14 +3,14 @@
 
 void mavesp::UDP::link(mavesp::CommLink* uart_interface){
     uart_interface_ = uart_interface;
-    udp_driver_.begin(CLIENT_PORT);
+    udp_driver_.begin(UDP_CLIENT_PORT);
 }
 
 
 int mavesp::UDP::send(mavlink_message_t* message, int count) {
     if(!dst_ip_){return 0;}
     int sentCount = 0;
-    udp_driver_.beginPacket(dst_ip_, HOST_PORT);
+    udp_driver_.beginPacket(dst_ip_, UDP_HOST_PORT);
     for(int i = 0; i < count; i++) {
         char buf[300];
         unsigned len = mavlink_msg_to_send_buffer((uint8_t*)buf, &message[i]);
@@ -18,7 +18,7 @@ int mavesp::UDP::send(mavlink_message_t* message, int count) {
         if(sent != len) {
             break;
             udp_driver_.endPacket();
-            udp_driver_.beginPacket(dst_ip_, HOST_PORT);
+            udp_driver_.beginPacket(dst_ip_, UDP_HOST_PORT);
             udp_driver_.write((uint8_t*)(void*)&buf[sent], len - sent);
             udp_driver_.endPacket();
             return sentCount;
@@ -40,12 +40,12 @@ int mavesp::UDP::send(mavlink_message_t* message) {
 void mavesp::UDP::_send_single_udp_message(mavlink_message_t* msg){
     char buf[300];
     unsigned len = mavlink_msg_to_send_buffer((uint8_t*)buf, msg);
-    udp_driver_.beginPacket(dst_ip_, HOST_PORT);
+    udp_driver_.beginPacket(dst_ip_, UDP_HOST_PORT);
     size_t sent = udp_driver_.write((uint8_t*)(void*)buf, len);
     udp_driver_.endPacket();
     if(sent != len) {
         delay(1);
-        udp_driver_.beginPacket(dst_ip_, HOST_PORT);
+        udp_driver_.beginPacket(dst_ip_, UDP_HOST_PORT);
         udp_driver_.write((uint8_t*)(void*)&buf[sent], len - sent);
         udp_driver_.endPacket();
     }

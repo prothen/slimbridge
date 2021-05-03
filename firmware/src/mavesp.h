@@ -18,7 +18,7 @@ public:
     mavlink_message_t       rx_msg_;
     mavlink_status_t        rx_status_;
     mavlink_status_t        mav_status_;
-    
+
 
 };
 

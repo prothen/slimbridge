@@ -13,22 +13,22 @@ void setup() {
     /*          ------------------------        */
     /*        USER SPECIFIC CONFIGURATION       */
     /*          ------------------------        */
-    
-    IPAddress IP(192, 168, 3, 14); 
-    IPAddress GATEWAY(192, 168, 3, 1); 
-    IPAddress SUBNET(255, 255, 255, 0); 
-    IPAddress DNS(1, 1, 1, 1); 
-    
+
+    IPAddress IP(11,0,0,220);
+    IPAddress GATEWAY(11, 0, 0, 1);
+    IPAddress SUBNET(255, 255, 255, 0);
+    IPAddress DNS(1, 1, 1, 1);
+
     WiFi.config(IP, GATEWAY, SUBNET, DNS, 0U);
-    WiFi.begin("yourssid", "yourpassword");
+    WiFi.begin("SML", "SML4admin.");
 
     /*          ------------------------        */
-        
+
     while(WiFi.status() != WL_CONNECTED){delay(500);}
 
     WiFi.setAutoReconnect(true);
     WiFi.setOutputPower(20.5);
-    
+
     udp_link.link(&uart_link);
     uart_link.link(&udp_link);
 }

@@ -9,13 +9,13 @@ void mavesp::UART::link(mavesp::CommLink* udp_interface){
 
 
 void mavesp::UART::forward_messages(){
-    if(n_queue_ < QUEUE_SIZE) {
+    if(n_queue_ < UART_QUEUE_SIZE) {
         if(_is_mavlink_message()) {
             n_queue_++;
         }
     }
-    // Send messages if queue is full or if some messages have been kept longer than QUEUE_TIMEOUT
-    if(n_queue_ && (n_queue_ >= QUEUE_SEND_THRESHOLD || (millis() - stamp_queue_) > QUEUE_TIMEOUT_MS)) {
+    // Send messages if queue is full or if some messages have been kept longer than UART_QUEUE_TIMEOUT
+    if(n_queue_ && (n_queue_ >= UART_QUEUE_SEND_THRESHOLD || (millis() - stamp_queue_) > UART_QUEUE_TIMEOUT_MS)) {
         int n_sent_messages = udp_interface_->send(message_, n_queue_);
         // Reset message queue for the amount of n_sent_messages messages
         if(n_sent_messages == n_queue_) {
