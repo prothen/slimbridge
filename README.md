@@ -8,9 +8,15 @@ Slim mavlink bridge exposing mavlink based serial interface to UDP world. This r
 
 
 ## Usage
+### Build & Flash using PlatformIO
+Flash to the microcontroller by using the following commands under the directory `./firmware`
 
-### Flash and build
+```bash
+platformio run -e esp01_1m -t upload
+```
+_Note: Specific port `platformio run -e esp01_1m -t upload --upload-port /dev/ttyUSB0` and `platformio run -e esp01_1m -t clean`._
 
+### Connect via mavros
 Use `mavros` with the connection url
 ```bash
 roslaunch mavros px4.launch fcu_url:=udp://:UDP_HOST_PORT@192.168.3.14:UDP_CLIENT_PORT
@@ -33,24 +39,24 @@ WiFi.begin("yourssid", "yourpassword");
 
 _Note: Additionally you can adjust the bridge `UART` and `UDP` configuration constants under `config.h`._
 
-## Setup
-- initialise the repository
-    - `git submodule update --init --recursive`
-- install platformio with `pip install platformio`
-- (optional) install visual studio code extension [here](https://platformio.org/platformio-ide) (in VSC under extensions `PlatformIO IDE`)
-- (optional) install libraries for flashing via `esptool`
-    - install esptool to flash binaries
-        - `cd resources/esptool && python setup.py install`
+**Multi-Vehicle Setup**:
 
-### Build & Flash using PlatformIO
-The following commands are executed in `/firmware`:
-- flash `platformio run -e esp01_1m -t upload`
-    - specific port `platformio run -e esp01_1m -t upload --upload-port /dev/ttyUSB0`
-- clean `platformio run -e esp01_1m -t clean`
+In order to connect to multiple vehicles from the same workstation, each ESP needs to be configured with a separate `UDP_HOST_PORT`.
+(Note that the vehicle`s slimbridge is written with the perspective of the `HOST` being a external workstation and the vehicle being the `CLIENT`.
+This means that the `UDP_CLIENT_PORT` can be same, as long as each vehicle has its unique IP in the network.)
+
+## Setup
+1. Initialise the repository with
+    - `git submodule update --init --recursive`
+2. Install platformio with
+    - `pip install platformio`
+3. (optional) install visual studio code extension [here](https://platformio.org/platformio-ide) (in VSC under extensions `PlatformIO IDE`)
+4. (optional) install `esptool` to flash binaries
+    - `cd resources/esptool && python setup.py install`
 
 ### Flash Procedure
-- flash procedure wiring [instructions](http://www.whatimade.today/esp8266-easiest-way-to-program-so-far/)
-- official px4 [documentation](https://docs.px4.io/v1.9.0/en/telemetry/esp8266_wifi_module.html)
+- Flash procedure wiring [instructions](http://www.whatimade.today/esp8266-easiest-way-to-program-so-far/)
+- Official PX4 [documentation](https://docs.px4.io/v1.9.0/en/telemetry/esp8266_wifi_module.html)
 
 
 **ESP01 Pinout:**
