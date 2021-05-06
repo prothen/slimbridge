@@ -21,7 +21,7 @@ Use `mavros` with the connection url
 ```bash
 roslaunch mavros px4.launch fcu_url:=udp://:UDP_HOST_PORT@192.168.3.14:UDP_CLIENT_PORT
 ```
-_Note: You can find the parameters under `firmware/src/config.h`._
+_Note: You can find the parameters under `firmware/include/config.h`._
 
 ### Configuration
 Adjust the following code segment excerpt in `main.cpp` under `firmware/src` to your liking.
